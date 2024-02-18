@@ -1,0 +1,37 @@
+(*speed of light*)
+(*in m/s*)
+c = 299792458
+
+(*planks constant*)
+h = 6.62607015*10^-34
+
+(*Energy of photon*)
+(*in J*)
+E_photon[frequency_] := h*frequency
+
+(*Compton wavelength*)
+(*in m*)
+\[Lambda]_Compton[mass_] := h/(mass*c)
+
+(*Momentum calculator*)
+(*For photons (in kg*m/s)*)
+p_photon[frequency_] := h*frequency/c
+
+(*For mass (in kg*m/s)*)
+p_mass[mass_, velocity_] := mass*velocity
+
+(*Energy calculator*)
+(*For photons (in J)*)
+E_photon[frequency_] := h*frequency
+
+(*For mass (in J)*)
+E_mass[mass_, velocity_] := (1/Sqrt[1 - (velocity/c)^2] - 1)*mass*c^2
+
+(*Four-momentum calculator*)
+(*For photons (in kg*m/s and J/c)*)
+FourMomentum_photon[frequency_] := {E_photon[frequency]/c, 
+  p_photon[frequency], 0, 0}
+
+(*For mass (in kg*m/s and J/c)*)
+FourMomentum_mass[mass_, velocity_] := {E_mass[mass_, velocity_]/c, 
+  p_mass[mass_, velocity_], 0, 0}

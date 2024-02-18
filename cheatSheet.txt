@@ -3,11 +3,8 @@
 c = 299792458
 
 (*planks constant*)
+(*in Js*)
 h = 6.62607015*10^-34
-
-(*Energy of photon*)
-(*in J*)
-E_photon[frequency_] := h*frequency
 
 (*Compton wavelength*)
 (*in m*)
@@ -33,5 +30,25 @@ FourMomentum_photon[frequency_] := {E_photon[frequency]/c,
   p_photon[frequency], 0, 0}
 
 (*For mass (in kg*m/s and J/c)*)
-FourMomentum_mass[mass_, velocity_] := {E_mass[mass_, velocity_]/c, 
-  p_mass[mass_, velocity_], 0, 0}
+(*FourMomentum_mass[mass_,velocity_]:={E_mass[mass_,velocity_]/c,p_\
+mass[mass_,velocity_],0,0}*)
+
+(*compton wavelength calculator*)
+(*Use kg*)
+ComptonWavelength[mass_] := (h)/(mass*c)
+
+(*This will find the delta \[Lambda] from electron scattering*)
+(*Use radians, and kg*)
+ComptonWavelengthShift[theta_, massElectron_] := 
+ ComptonWavelength (massElectron)*(1 - Cos[theta])
+
+(*ComptonEnergyShift[E0_,theta_]:=Module[{hc,lambdaC,deltaE},hc=6.626*\
+10^-34*3*10^8;(*Planck's constant times speed of light in \
+J*m*)lambdaC=2.43*10^-12;(*Compton wavelength in \
+meters*)deltaE=(E0/(1+(E0/(hc/lambdaC))*(1-Cos[theta])))-E0;
+deltaE]*)
+theta = Pi/4; (*Scattering angle of 45 degrees*)
+massElectron = 9.10938356*10^-31; (*Mass of electron in kg*)
+
+deltaLambda = ComptonWavelengthShift[theta, massElectron];
+Print["Compton wavelength shift: ", deltaLambda, " meters"];

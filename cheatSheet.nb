@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2742,         80]
-NotebookOptionsPosition[      2165,         62]
-NotebookOutlinePosition[      2570,         78]
-CellTagsIndexPosition[      2527,         75]
+NotebookDataLength[      6279,        175]
+NotebookOptionsPosition[      5699,        157]
+NotebookOutlinePosition[      6104,        173]
+CellTagsIndexPosition[      6061,        170]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -43,11 +43,106 @@ Cell[BoxData[
     RowBox[{"in", " ", "J"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"E_photon", "[", "frequency_", "]"}], ":=", 
-    RowBox[{"h", "*", "frequency"}]}]}]}]], "Input",
- CellChangeTimes->{{3.9170116625268326`*^9, 3.917011767132389*^9}, {
-  3.917011815825838*^9, 3.9170118446295834`*^9}, {3.917011927267706*^9, 
-  3.917012002678543*^9}},
- CellLabel->"In[4]:=",ExpressionUUID->"d66633cf-741f-fd47-82bc-f8912f51632a"],
+    RowBox[{"h", "*", "frequency"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Compton", " ", "wavelength"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"in", " ", "m"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Lambda]_Compton", "[", "mass_", "]"}], ":=", 
+    RowBox[{"h", "/", 
+     RowBox[{"(", 
+      RowBox[{"mass", "*", "c"}], ")"}]}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Momentum", " ", "calculator"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"For", " ", "photons", " ", 
+     RowBox[{"(", 
+      RowBox[{"in", " ", "kg", "*", 
+       RowBox[{"m", "/", "s"}]}], ")"}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"p_photon", "[", "frequency_", "]"}], ":=", 
+    RowBox[{"h", "*", 
+     RowBox[{"frequency", "/", "c"}]}]}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{"For", " ", "mass", " ", 
+     RowBox[{"(", 
+      RowBox[{"in", " ", "kg", "*", 
+       RowBox[{"m", "/", "s"}]}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p_mass", "[", 
+     RowBox[{"mass_", ",", "velocity_"}], "]"}], ":=", 
+    RowBox[{"mass", "*", "velocity"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Energy", " ", "calculator"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"For", " ", "photons", " ", 
+     RowBox[{"(", 
+      RowBox[{"in", " ", "J"}], ")"}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"E_photon", "[", "frequency_", "]"}], ":=", 
+    RowBox[{"h", "*", "frequency"}]}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{"For", " ", "mass", " ", 
+     RowBox[{"(", 
+      RowBox[{"in", " ", "J"}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"E_mass", "[", 
+     RowBox[{"mass_", ",", "velocity_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"1", "/", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"1", "-", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"velocity", "/", "c"}], ")"}], "^", "2"}]}], "]"}]}], "-",
+        "1"}], ")"}], "*", "mass", "*", 
+     RowBox[{"c", "^", "2"}]}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Four", "-", 
+     RowBox[{"momentum", " ", "calculator"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"For", " ", "photons", " ", 
+     RowBox[{"(", 
+      RowBox[{"in", " ", "kg", "*", 
+       RowBox[{"m", "/", "s"}], " ", "and", " ", 
+       RowBox[{"J", "/", "c"}]}], ")"}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"FourMomentum_photon", "[", "frequency_", "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"E_photon", "[", "frequency", "]"}], "/", "c"}], ",", 
+      RowBox[{"p_photon", "[", "frequency", "]"}], ",", "0", ",", "0"}], 
+     "}"}]}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{"For", " ", "mass", " ", 
+     RowBox[{"(", 
+      RowBox[{"in", " ", "kg", "*", 
+       RowBox[{"m", "/", "s"}], " ", "and", " ", 
+       RowBox[{"J", "/", "c"}]}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FourMomentum_mass", "[", 
+     RowBox[{"mass_", ",", "velocity_"}], "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"E_mass", "[", 
+        RowBox[{"mass_", ",", "velocity_"}], "]"}], "/", "c"}], ",", 
+      RowBox[{"p_mass", "[", 
+       RowBox[{"mass_", ",", "velocity_"}], "]"}], ",", "0", ",", "0"}], 
+     "}"}]}], "\n"}]}]], "Input",
+ CellChangeTimes->{{3.917011662526833*^9, 3.917011767132389*^9}, {
+  3.917011815825838*^9, 3.917011844629584*^9}, {3.917011927267706*^9, 
+  3.917012002678543*^9}, {3.917211136072893*^9, 
+  3.917211147638376*^9}},ExpressionUUID->"d66633cf-741f-fd47-82bc-\
+f8912f51632a"],
 
 Cell[BoxData["299792458"], "Output",
  CellChangeTimes->{3.9170116744858665`*^9, 3.9170117687229595`*^9, 
@@ -60,7 +155,7 @@ Cell[BoxData["6.6260701500000015`*^-34"], "Output",
  CellLabel->"Out[5]=",ExpressionUUID->"90a66ded-2660-7a4c-a5e7-5afc9ac6ba7c"]
 }, Open  ]]
 },
-WindowSize->{1141.2, 585.6},
+WindowSize->{1141.2, 574.8},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
 StyleDefinitions->"Default.nb",
@@ -78,9 +173,9 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 1132, 27, 200, "Input",ExpressionUUID->"d66633cf-741f-fd47-82bc-f8912f51632a"],
-Cell[1715, 51, 209, 3, 32, "Output",ExpressionUUID->"c5380e9d-fa5d-8a44-a3d2-19dc3ab7f683"],
-Cell[1927, 56, 222, 3, 55, "Output",ExpressionUUID->"90a66ded-2660-7a4c-a5e7-5afc9ac6ba7c"]
+Cell[580, 22, 4666, 122, 695, "Input",ExpressionUUID->"d66633cf-741f-fd47-82bc-f8912f51632a"],
+Cell[5249, 146, 209, 3, 32, "Output",ExpressionUUID->"c5380e9d-fa5d-8a44-a3d2-19dc3ab7f683"],
+Cell[5461, 151, 222, 3, 32, "Output",ExpressionUUID->"90a66ded-2660-7a4c-a5e7-5afc9ac6ba7c"]
 }, Open  ]]
 }
 ]

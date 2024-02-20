@@ -6,6 +6,12 @@ c = 299792458
 (*in Js*)
 h = 6.62607015*10^-34
 
+(*Mass of electron in kg*)
+massElectron = 9.10938356*10^-31; 
+
+(*columb charge*)
+Q = 1.602176634*10^\[Minus]19
+
 (*Compton wavelength*)
 (*in m*)
 \[Lambda]_Compton[mass_] := h/(mass*c)
@@ -39,16 +45,9 @@ ComptonWavelength[mass_] := (h)/(mass*c)
 
 (*This will find the delta \[Lambda] from electron scattering*)
 (*Use radians, and kg*)
-ComptonWavelengthShift[theta_, massElectron_] := 
- ComptonWavelength (massElectron)*(1 - Cos[theta])
+ComptonWavelengthShift[massElectron_, theta_] := 
+ ComptonWavelength[massElectron]*(1 - Cos[theta])
 
-(*ComptonEnergyShift[E0_,theta_]:=Module[{hc,lambdaC,deltaE},hc=6.626*\
-10^-34*3*10^8;(*Planck's constant times speed of light in \
-J*m*)lambdaC=2.43*10^-12;(*Compton wavelength in \
-meters*)deltaE=(E0/(1+(E0/(hc/lambdaC))*(1-Cos[theta])))-E0;
-deltaE]*)
-theta = Pi/4; (*Scattering angle of 45 degrees*)
-massElectron = 9.10938356*10^-31; (*Mass of electron in kg*)
-
-deltaLambda = ComptonWavelengthShift[theta, massElectron];
-Print["Compton wavelength shift: ", deltaLambda, " meters"];
+ComptonEnergyShift[massElectron_, photonEnergy_, 
+  theta_] := (1/(photonEnergy + (h*c*
+        ComptonWavelengthShift[massElectron, theta]))) - photonEnergy
